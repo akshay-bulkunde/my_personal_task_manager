@@ -1,5 +1,5 @@
-const { Task } = require("../models");
-const {Op}=require('sequelize')
+const { Task } = require('../models');
+const {Op}=require('sequelize');
 
 exports.getTasks = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ exports.getTasks = async (req, res) => {
 
     const orderBy = [];
     if (sortBy) {
-      orderBy.push([sortBy, order === "desc" ? "DESC" : "ASC"]);
+      orderBy.push([sortBy, order === 'desc' ? 'DESC' : 'ASC']);
     }
 
     const tasks = await Task.findAll({ where, order: orderBy });
@@ -25,7 +25,7 @@ exports.getTasks = async (req, res) => {
 exports.getTaskById = async (req, res) => {
   try {
     const task = await Task.findOne({ where: { id: req.params.id, userId: req.user.id } });
-    if (!task) return res.status(404).json({ error: "Task not found" });
+    if (!task) return res.status(404).json({ error: 'Task not found' });
 
     res.json(task);
   } catch (err) {
@@ -58,7 +58,7 @@ exports.updateTask = async (req, res) => {
     const { title, description, priority, dueDate, status } = req.body;
 
     const task = await Task.findOne({ where: { id, userId: req.user.id } });
-    if (!task) return res.status(404).json({ error: "Task not found" });
+    if (!task) return res.status(404).json({ error: 'Task not found' });
 
     task.title = title || task.title;
     task.description = description || task.description;
@@ -79,10 +79,10 @@ exports.deleteTask = async (req, res) => {
     const { id } = req.params;
 
     const task = await Task.findOne({ where: { id, userId: req.user.id } });
-    if (!task) return res.status(404).json({ error: "Task not found" });
+    if (!task) return res.status(404).json({ error: 'Task not found' });
 
     await task.destroy();
-    res.status(204).json({ message: "Task deleted successfully" });
+    res.status(204).json({ message: 'Task deleted successfully'});
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

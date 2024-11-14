@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/config')
+const config = require('../config/config');
 
 module.exports = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', ''); 
@@ -14,6 +14,6 @@ module.exports = (req, res, next) => {
     console.log('User decoded from token:', req.user); 
     next();
   } catch (error) {
-    return res.status(400).json({ error: 'Invalid or expired token.' });
+    return res.status(400).json({ error: `Invalid or expired token. ${error}` });
   }
 };
