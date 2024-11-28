@@ -1,0 +1,30 @@
+{
+    "user": {
+      "id": 101,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "isActive": true,
+      "roles": ["admin", "editor"],
+      "profile": {
+        "age": 30,
+        "gender": "male",
+        "location": "New York",
+        "interests": ["coding", "reading", "gaming"]
+      },
+      "projects": [
+        {
+          "id": 1,
+          "title": "Website Redesign",
+          "status": "in-progress",
+          "dueDate": "2024-12-15"
+        },
+        {
+          "id": 2,
+          "title": "Mobile App Development",
+          "status": "completed",
+          "dueDate": "2024-10-30"
+        }
+      ]
+    }
+  }
+  
